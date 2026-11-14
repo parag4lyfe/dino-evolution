@@ -1,0 +1,2 @@
+Extract the full ZIP. Install Node.js if needed, then double-click START-GAME.cmd.
+See README.md for setup, controls and building.

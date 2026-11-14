@@ -1,0 +1,14 @@
+node_modules/
+dist/
+work/
+outputs/
+.openai/
+*.log
+*.png
+!public/**/*.png
+test-results/
+playwright-report/
+ANALYSIS.txt
+.env
+.env.*
+!.env.example

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#131c27" />
+    <title>DINO: EVOLUTION</title>
+  </head>
+  <body>
+    <main id="app">
+      <section id="stage" aria-label="Dino Evolution game">
+        <div id="game"></div><div id="overlay"></div>
+        <div id="game-tools"><button id="sound" aria-label="Toggle sound">SOUND OFF</button><button id="screen-toggle" type="button" aria-pressed="false">⛶ FULL SCREEN</button></div>
+        <button id="evolve" hidden></button>
+        <button id="comeback" hidden aria-label="Activate Comeback Charge near your previous crash point"></button>
+        <div id="touch"><button data-control="slide">↓ SLIDE</button><button id="touch-dash" style="display:none">ϟ DASH</button><button data-control="jump">↑ JUMP</button></div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

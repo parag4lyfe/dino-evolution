@@ -6,6 +6,10 @@
 
 Run. Adapt. Respawn. Turn your next attempt into your best one.
 
+## [▶ Play free on itch.io](https://parag4lyfe90.itch.io/dino-evolution)
+
+Launch the game in your browser. No installation required.
+
 **PHASER 3 · JAVASCRIPT · VITE · HTML5**
 
 ![Dino Evolution main menu](docs/images/main-menu.png)

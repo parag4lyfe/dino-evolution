@@ -45,7 +45,7 @@ npm run dev
 ```
 
 Open the address printed by Vite, usually **http://127.0.0.1:5173/**.
-The repository is private, so cloning requires access.
+The source repository is public and can be cloned without a GitHub account.
 
 ### Windows launcher
 

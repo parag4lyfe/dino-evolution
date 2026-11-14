@@ -1,67 +1,132 @@
-# DINO: EVOLUTION
+<div align="center">
 
-A single-player browser runner about adapting and bouncing back. Built with
-JavaScript, Phaser 3 and Vite, with six worlds and a cosmetic skin store.
+# DINO / EVOLUTION
 
-## Play on your computer
+### Small dino. Big second chances.
 
-The prepared local copy includes a verified production build in `dist`. Double-click
-`START-GAME.cmd` to play at http://127.0.0.1:5173/. The launcher uses installed
-Node.js or the bundled Codex runtime. No dependency download is needed to play.
-Keep the launcher terminal open while playing. If the game is already running,
-the launcher opens it. Use the same URL each time to retain browser progress.
+Run. Adapt. Respawn. Turn your next attempt into your best one.
 
-Git checkouts exclude `dist` and dependencies. After cloning, run `npm ci` and
-`npm run build` before using the launcher, or use `npm run dev` to develop.
-Node.js 22.12 or newer is recommended for the Vite toolchain.
+**PHASER 3 · JAVASCRIPT · VITE · HTML5**
 
-The development instructions below apply when rebuilding or editing the source.
+![Dino Evolution main menu](docs/images/main-menu.png)
 
-1. Install Node.js if it is not already installed.
-2. Extract the whole ZIP to a folder.
-3. On Windows, double-click START-GAME.cmd.
-4. Keep its terminal open while playing. The browser opens automatically.
+**[Quick start](#quick-start) · [Controls](#controls) · [World route](#world-route) · [Build & test](#build--test)**
 
-Or run these commands from the extracted folder:
+</div>
 
-```
+## Every run is a new experiment
+
+A single-player browser runner built with Phaser and Vite. Jump over hazards,
+slide under birds, collect DNA, and choose temporary mutations as you level up.
+When extinction catches you, come back with another chance to break your record.
+
+- **Six worlds to discover.** Start in the desert and push toward prehistoric ruins.
+- **Evolve while running.** Choose a temporary power when Evolution Ready appears.
+- **Make a comeback.** Use an earned charge near the spot where your previous run ended.
+- **Find your look.** Preview cosmetic skins and buy them with earned DNA.
+- **Keep your progress.** Records, wallet, skins, and interrupted runs save in your browser.
+- **Play your way.** Keyboard controls, touch buttons, sound toggle, and fullscreen.
+
+![A run through Ancient Desert](docs/images/gameplay.png)
+
+## Quick start
+
+Install **Node.js 22.12+**, then run:
+
+```bash
+git clone https://github.com/parag4lyfe/dino-evolution.git
+cd dino-evolution
 npm ci
 npm run dev
 ```
 
-Open the localhost address printed in the terminal. The first dependency install
-needs internet access. Afterwards, the game uses only bundled local assets.
+Open the address printed by Vite, usually **http://127.0.0.1:5173/**.
+The repository is private, so cloning requires access.
+
+### Windows launcher
+
+Build once after cloning:
+
+```bash
+npm ci
+npm run build
+```
+
+Then double-click **`START-GAME.cmd`**. The launcher opens the production build
+at **http://127.0.0.1:5173/** and uses installed Node.js or the Codex bundled runtime.
+Keep its terminal open while playing; press **Ctrl+C** to stop the server.
+The prepared local copy already includes a build.
 
 ## Controls
 
-Space/Up: jump. Down: slide. Escape: pause. When the large green EVOLUTION READY
-banner appears, press E or tap it to choose a power. X uses an unlocked dash.
-C activates a Comeback Charge near your previous crash point.
+| Action | Keyboard | Touch / on-screen |
+| :--- | :--- | :--- |
+| Jump | **Space** or **Up**; hold for height | **Jump** |
+| Slide | **Down** | **Slide** |
+| Pause / resume | **Esc** | Pause button / resume menu |
+| Choose an evolution | **E** when ready, then select a card | Evolution Ready banner |
+| Electric Dash | **X**, when unlocked | Dash button |
+| Comeback Charge | **C**, near your previous crash point | Comeback button |
+| Sound / fullscreen | Use the on-screen buttons | Use the on-screen buttons |
 
-Your first completed run awards a one-time 300 DNA bounty, saved in this browser.
-Open the Store from the reward to buy a skin. Existing testers receive it after
-their next completed run if they have not claimed it yet.
+Your first completed run awards a one-time **300 DNA bounty**. Visit the skin
+store to preview a look, buy or select it, and return to the game.
 
-The store has a Preview, Select/Buy & Select, Done flow. Progress saves in the
-same browser and local URL. Continue resumes an interrupted run. Switching
-browsers, devices or hostnames starts a separate save.
+## World route
 
-## Build / test
+| Distance | World |
+| ---: | :--- |
+| 0 m | Ancient Desert |
+| 500 m | Jungle |
+| 1,000 m | Volcano |
+| 1,500 m | Tundra |
+| 2,500 m | Cyber City |
+| 4,000 m | Prehistoric Ruins |
 
+## Build & test
+
+| Command | Purpose |
+| :--- | :--- |
+| `npm run dev` | Start the local development server |
+| `npm test` | Run the 16 included tests |
+| `npm run build` | Create the production build in `dist/` |
+| `npm run preview` | Preview the production build locally |
+
+The test suite covers progression, temporary powers, world unlocks, difficulty,
+pickup clearance, skin purchases, save migration, first-run rewards, and comeback timing.
+
+### HTML5 / itch.io release
+
+Build the project, then ZIP **the contents of `dist/`** with `index.html` at the
+archive root. Upload it as an **HTML game** on itch.io and mark the ZIP as playable
+in the browser. Use click-to-launch fullscreen or a **1000 × 560** embed with
+fullscreen support. The build uses relative asset paths for hosted embedding.
+
+Serve the build over HTTP; opening `index.html` with `file://` is unsupported.
+No game server or account login is required to play.
+
+## Project map
+
+```text
+src/
+  scenes/GameScene.js       Run loop, hazards, input, and game state
+  entities/Dino.js          Player behavior
+  systems/                 Worlds, progression, powers, store, and saves
+  skinArt.js               Character artwork
+  ui.js                    Menus, store, results, and evolution choices
+public/maps/               Background images and provenance notes
+tests/                     Gameplay and save-system tests
+serve-local.cjs             Local production server
+START-GAME.cmd              Windows launcher
 ```
-npm test
-npm run build
-npm run preview
-```
 
-The contents of dist form an HTML5 release. Serve over HTTP; directly opening
-index.html with file:// is not supported. For itch.io, ZIP the contents of dist
-with index.html at the root.
+## Saves & assets
 
-## Source and assets
+Progress stays in the same browser and origin using localStorage and IndexedDB.
+Use the same local URL to keep your save. Another browser, device, hostname,
+or hosted version has a separate save; clearing site data removes local progress.
 
-Game logic is in src/scenes, systems in src/systems, and character art in
-src/skinArt.js. Original sprites/effects are drawn in code; audio is synthesized.
-Background reference provenance is recorded in public/maps/ASSETS.md. External
-background images retain their original rights; no blanket asset license is
-claimed. Development used AI assistance. No personal accounts are required.
+Character sprites and effects are drawn in code, and audio is synthesized.
+Background provenance is documented in [public/maps/ASSETS.md](public/maps/ASSETS.md).
+External reference images retain their original rights; this repository does not
+claim a blanket license for those assets. Development used AI assistance.

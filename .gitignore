@@ -6,6 +6,7 @@ outputs/
 *.log
 *.png
 !public/**/*.png
+!docs/images/*.png
 test-results/
 playwright-report/
 ANALYSIS.txt
